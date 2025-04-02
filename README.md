@@ -5,7 +5,7 @@
 This project analyzes a sample dataset from Citi Bike, covering June 2016 and June 2019, to examine the gender-based perspective of bike usage in New York City. The analysis aims to explore how bike usage has evolved over time and how gender influences bike-sharing habits. The trip data is publicly available on the [Citi Bike System Data](https://citibikenyc.com/system-data) website.
 
 To structure the project, I implemented a full **Extract, Transform, and Load (ETL)** process, followed by data visualization in **Tableau** to present compelling insights based on the findings.
-
+## Dashboard Deployment link: [Click Here](https://atnafb.github.io/tableau_CitiBike_Usage/index.html)
 ## ETL Process
 
 ### Extraction
