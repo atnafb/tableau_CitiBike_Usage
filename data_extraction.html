@@ -13,31 +13,32 @@
 <body>
     <header>
         <h1>Atnafu Ayalew</h1>
-        <h1>Under construction</h1>
-        <p>Data Extraction and Transformation Using Python and Pandas For CitiBike Dataset</p>
-        <p><a href="index.html">BACK TO HOME PAGE</a> </p>
+        <h1>Under Construction</h1>
+        <p>Data Extraction, Transformation, Loading and Visualization Using Python, SQL and Tableau for CitiBike Dataset</p>
+        <p><a href="index.html">BACK TO HOME PAGE</a></p>
     </header>
 
     <section id="data-extraction-info">
-        <h2>How I Extracted, Transformed, and Cleaned the Data</h2>
+        <h2>ETL and Visualization Process</h2>
         <p>
             In this project, I used Python and the Pandas library to extract, transform, and clean data before feeding it into the Tableau dashboard. Below are the key steps I followed during the data extraction and preparation process:<br>
-            Please visit the the jupyter notebook to learn more about the data extraction and cleaning process <a href="https://github.com/atnafb/tableau_CitiBike_Usage/blob/main/citybike_data_extraction.ipynb"> HERE </a>
+            Please visit the Jupyter Notebook to learn more about the data extraction and cleaning process <a href="https://github.com/atnafb/tableau_CitiBike_Usage/blob/main/citybike_data_ETL.ipynb">HERE</a>.
         </p>
 
         <h3>1. Data Extraction</h3>
         <p>
-            I began by extracting the data from <a href="https://citibikenyc.com/system-data">citiBike system data</a>, publicly available datasets. The data contained information related to Citi Bike usage, such as trip duration, rider gender, and trip locations for the years 2013 to 2025. I used Pandas to extrac the zip files. Instead of manually downloading the file, I used function function to load the raw data into DataFrames for further manipulation.<br>
+            I began by extracting the data from <a href="https://citibikenyc.com/system-data">Citi Bike system data</a>, publicly available datasets. The data contained information related to Citi Bike usage, such as trip duration, rider gender, and trip locations for the years 2013 to 2025. I used Pandas to extract the ZIP files. Instead of manually downloading the files, I used a function to load the raw data into DataFrames for further manipulation.<br>
             <code style="display: block; text-align: center; font-family: 'Courier New', Courier, monospace;">urls = {
-                "2016": "https://s3.amazonaws.com/tripdata/2016-citibike-tripdata.zip"<br>
+                "2016": "https://s3.amazonaws.com/tripdata/2016-citibike-tripdata.zip"
             }<br>
             def download_zip(url, filename):<br>
+                import requests<br>
                 response = requests.get(url, stream=True)<br>
                 if response.status_code == 200:<br>
                     with open(filename, 'wb') as file:<br>
                         for chunk in response.iter_content(chunk_size=1024):<br>
                             file.write(chunk)<br>
-                            print(f'Downloaded: {filename}')<br>
+                        print(f'Downloaded: {filename}')<br>
                 else:<br>
                     print(f'Failed to download {filename}')<br>
             
@@ -49,7 +50,7 @@
         <p>
             After extraction, the next step was transforming the data. This involved operations such as:
             <ul>
-                <li><strong>Filtering</strong>: Removing irrelevant or missing data points to make the data more managable for Tableau</li>
+                <li><strong>Filtering</strong>: Removing irrelevant or missing data points to make the data more manageable for Tableau.</li>
                 <li><strong>Converting Data Types</strong>: Ensuring numerical columns, such as trip duration and rider age, were in the correct data type (e.g., integers, floats).</li>
                 <li><strong>Handling Missing Values</strong>: Using Pandas' <code>fillna()</code> and <code>dropna()</code> methods to handle missing or null values in the dataset.</li>
                 <li><strong>Creating New Columns</strong>: I derived new columns, such as the "trip duration category" by binning trip durations into categories (e.g., short, medium, long trips).</li>
@@ -61,7 +62,7 @@
             The final step was cleaning the data to ensure its accuracy and consistency. Some of the actions I took include:
             <ul>
                 <li><strong>Removing Duplicates</strong>: Identifying and eliminating duplicate records using <code>drop_duplicates()</code>.</li>
-                <li><strong>Standardizing Values</strong>: Ensuring consistency in categorical columns, such as gender ("Male", "Female" "Unknown").</li>
+                <li><strong>Standardizing Values</strong>: Ensuring consistency in categorical columns, such as gender ("Male", "Female", "Unknown").</li>
                 <li><strong>Renaming Columns</strong>: Giving columns more meaningful names for better understanding, such as changing "duration" to "trip_duration_minutes".</li>
             </ul>
         </p>
